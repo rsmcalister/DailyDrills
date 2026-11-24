@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct DailyDrillsApp: App {
@@ -9,5 +10,6 @@ struct DailyDrillsApp: App {
             RootView()
                 .environment(store)
         }
+        .modelContainer(for: TaskProgress.self)
     }
 }

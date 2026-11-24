@@ -1,8 +1,21 @@
 import SwiftUI
+import SwiftData
 
 struct DayDetailView: View {
     let day: DayTask
+
     @Environment(\.horizontalSizeClass) private var sizeClass
+    @Environment(\.modelContext) private var modelContext
+    @Query var progress: [TaskProgress]
+    var taskProgress: TaskProgress? {
+        progress.filter({ $0.taskID == day.dateString }).first
+    }
+    var isDone: Bool {
+        if let _ = taskProgress {
+            return true
+        }
+        return false
+    }
 
     var body: some View {
         ScrollView {
@@ -44,6 +57,15 @@ struct DayDetailView: View {
                         }
                     }
                 }
+
+                HStack {
+                    Spacer()
+                    Button(isDone ? "Completed" : "Mark Complete") {
+                        markComplete()
+                    }
+                    .buttonStyle(.bordered)
+                    Spacer()
+                }
             }
             .padding()
         }
@@ -83,6 +105,15 @@ struct DayDetailView: View {
                     StateCard(title: "End state", text: day.endState)
                 }
             }
+        }
+    }
+
+    func markComplete() {
+        if let taskProgress {
+            modelContext.delete(taskProgress)
+        } else {
+            let task = TaskProgress(taskID: day.dateString, isDone: true)
+            modelContext.insert(task)
         }
     }
 }

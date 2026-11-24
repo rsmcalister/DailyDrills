@@ -45,3 +45,15 @@ struct Link: Decodable, Hashable, Sendable {
     let title: String
     let url: URL
 }
+
+extension DayTask {
+    private var formatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }
+    var dateString: String {
+        return formatter.string(from: date)
+    }
+
+}
