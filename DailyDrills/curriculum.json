@@ -1,0 +1,2172 @@
+{
+  "app": "DailyDrills",
+  "version": 1,
+  "weeks": [
+    {
+      "week": 1,
+      "startDate": "2026-11-23",
+      "endDate": "2026-11-29",
+      "theme": "App shell + hashing",
+      "days": [
+        {
+          "id": "2026-11-23",
+          "date": "2026-11-23",
+          "weekday": "Mon",
+          "kind": "setup",
+          "title": "Set up the DailyDrills shell",
+          "study": {
+            "topic": "Reading AI-generated code critically",
+            "searchHint": "How to review a SwiftUI project structure (Apple sample code or a Hacking with Swift project walkthrough)"
+          },
+          "links": [],
+          "description": "Give the Xcode agent the DailyDrills prompt, add curriculum.json to the app target, and run it. Then read every generated file yourself and fix anything you'd reject in code review. From tomorrow, all coding is by hand.",
+          "startState": "No project.",
+          "endState": "App runs: Weeks list, Week detail with days, Day detail showing this description. Test target runs one passing decode test. Committed to a Git repo.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "Blog: draft or revise this week's post",
+          "buildStudyHint": "An article on technical blogging for developers (structure, titles, examples)"
+        },
+        {
+          "id": "2026-11-24",
+          "date": "2026-11-24",
+          "weekday": "Tue",
+          "kind": "ios",
+          "title": "Track completion with SwiftData",
+          "study": {
+            "topic": "SwiftData basics: @Model, ModelContainer, @Query, modelContext",
+            "searchHint": "Apple SwiftData documentation and the WWDC23 'Meet SwiftData' session"
+          },
+          "links": [],
+          "description": "Add a TaskProgress model keyed by the task's date string. Show a checkmark on each day row and a toggle on the detail screen. Progress must survive app relaunch.",
+          "startState": "Days show no completion state.",
+          "endState": "Tapping Done on a day persists it; the row shows a checkmark after relaunch; the week row shows 'n of 7 done'.",
+          "starterCode": "import SwiftData\nimport Foundation\n\n@Model\nfinal class TaskProgress {\n    @Attribute(.unique) var taskID: String   // e.g. \"2026-11-24\"\n    var isDone: Bool\n    var completedAt: Date?\n\n    init(taskID: String, isDone: Bool = false, completedAt: Date? = nil) {\n        self.taskID = taskID\n        self.isDone = isDone\n        self.completedAt = completedAt\n    }\n}",
+          "minutes": 45,
+          "build": "iOS system design drill (one prompt from the plan, out loud, 45 min)",
+          "buildStudyHint": "A mobile system design write-up for the day's prompt (photo feed, chat, offline reader, image cache, etc.)"
+        },
+        {
+          "id": "2026-11-25",
+          "date": "2026-11-25",
+          "weekday": "Wed",
+          "kind": "leetcode",
+          "title": "Two Sum + Valid Anagram",
+          "study": {
+            "topic": "Pattern: Hashing",
+            "searchHint": "NeetCode or a well-known written explanation of the Hashing pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 1: Two Sum",
+              "url": "https://leetcode.com/problems/two-sum/"
+            },
+            {
+              "title": "LeetCode 242: Valid Anagram",
+              "url": "https://leetcode.com/problems/valid-anagram/"
+            }
+          ],
+          "description": "Solve Two Sum + Valid Anagram in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0001_TwoSum.swift\nfunc twoSum(_ nums: [Int], _ target: Int) -> [Int] {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0001_TwoSumTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0001_TwoSum_example() {\n    #expect(twoSum([2, 7, 11, 15], 9) == [0, 1])\n}\n\n// DailyDrills/Problems/P0242_ValidAnagram.swift\nfunc isAnagram(_ s: String, _ t: String) -> Bool {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0242_ValidAnagramTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0242_ValidAnagram_example() {\n    #expect(isAnagram(\"anagram\", \"nagaram\"))\n    #expect(!isAnagram(\"rat\", \"car\"))\n}",
+          "minutes": 45,
+          "build": "Connections",
+          "buildStudyHint": "Apple docs or a WWDC session for the Connections feature you're working on"
+        },
+        {
+          "id": "2026-11-26",
+          "date": "2026-11-26",
+          "weekday": "Thu",
+          "kind": "ios",
+          "title": "Search and filter",
+          "study": {
+            "topic": "SwiftUI .searchable and filtering derived state",
+            "searchHint": "Apple docs for searchable(text:) and a Hacking with Swift article on searchable"
+          },
+          "links": [],
+          "description": "Add .searchable to the Weeks screen to search all task titles, plus a filter menu: All, LeetCode, iOS, Live coding, Not done.",
+          "startState": "Weeks list shows everything.",
+          "endState": "Typing filters results across weeks; the filter menu combines with search; empty results show a ContentUnavailableView.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "Behavioral: say 1-2 STAR stories out loud",
+          "buildStudyHint": "An article on the STAR method for senior engineer behavioral interviews"
+        },
+        {
+          "id": "2026-11-27",
+          "date": "2026-11-27",
+          "weekday": "Fri",
+          "kind": "leetcode",
+          "title": "Group Anagrams",
+          "study": {
+            "topic": "Pattern: Hashing",
+            "searchHint": "NeetCode or a well-known written explanation of the Hashing pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 49: Group Anagrams",
+              "url": "https://leetcode.com/problems/group-anagrams/"
+            }
+          ],
+          "description": "Solve Group Anagrams in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0049_GroupAnagrams.swift\nfunc groupAnagrams(_ strs: [String]) -> [[String]] {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0049_GroupAnagramsTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0049_GroupAnagrams_example() {\n    #expect(Set(groupAnagrams([\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]).map { Set($0) }) == [[\"eat\",\"tea\",\"ate\"], [\"tan\",\"nat\"], [\"bat\"]])\n}",
+          "minutes": 45,
+          "build": "Blog: finish and publish if today is a publish day",
+          "buildStudyHint": "An article on promoting a technical blog post on LinkedIn"
+        },
+        {
+          "id": "2026-11-28",
+          "date": "2026-11-28",
+          "weekday": "Sat",
+          "kind": "livecoding",
+          "title": "Live-coding drill: a Today screen",
+          "study": {
+            "topic": "TabView and date handling with Calendar",
+            "searchHint": "Apple docs: Calendar.isDate(_:inSameDayAs:) and TabView"
+          },
+          "links": [],
+          "description": "Add a Today tab that shows the task whose date matches today, with a Done button, and 'Next up' for tomorrow. Timebox: 45 minutes from a blank file, no AI, no copying from earlier code. Narrate as if an interviewer is watching.",
+          "startState": "Only the Weeks tab exists.",
+          "endState": "A Today tab opens on launch and shows today's task and tomorrow's preview.",
+          "starterCode": "",
+          "minutes": 60,
+          "build": "Mock interview or a longer blog / Connections session",
+          "buildStudyHint": "An article on how iOS mock interviews are run and scored"
+        },
+        {
+          "id": "2026-11-29",
+          "date": "2026-11-29",
+          "weekday": "Sun",
+          "kind": "review",
+          "title": "Rest + weekly review",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Day off from coding. 15 minutes only: update the tracker, count the week's applications, outreach, screens and problems solved, compare them with the plan's checkpoints, and write down the first task for Monday.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "startDate": "2026-11-30",
+      "endDate": "2026-12-06",
+      "theme": "Hashing + async state",
+      "days": [
+        {
+          "id": "2026-11-30",
+          "date": "2026-11-30",
+          "weekday": "Mon",
+          "kind": "leetcode",
+          "title": "Top K Frequent Elements",
+          "study": {
+            "topic": "Pattern: Hashing + bucket sort",
+            "searchHint": "NeetCode or a well-known written explanation of the Hashing + bucket sort pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 347: Top K Frequent Elements",
+              "url": "https://leetcode.com/problems/top-k-frequent-elements/"
+            }
+          ],
+          "description": "Solve Top K Frequent Elements in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0347_TopKFrequentElements.swift\nfunc topKFrequent(_ nums: [Int], _ k: Int) -> [Int] {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0347_TopKFrequentElementsTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0347_TopKFrequentElements_example() {\n    #expect(Set(topKFrequent([1,1,1,2,2,3], 2)) == [1, 2])\n}",
+          "minutes": 45,
+          "build": "Blog: draft or revise this week's post",
+          "buildStudyHint": "An article on technical blogging for developers (structure, titles, examples)"
+        },
+        {
+          "id": "2026-12-01",
+          "date": "2026-12-01",
+          "weekday": "Tue",
+          "kind": "ios",
+          "title": "Notes with debounced autosave",
+          "study": {
+            "topic": "Task cancellation and Task.sleep for debouncing",
+            "searchHint": "Swift concurrency docs on task cancellation; an article on debouncing with async/await"
+          },
+          "links": [],
+          "description": "Add a notes field to each task (store it on TaskProgress). Save 500 ms after the user stops typing by cancelling and restarting a Task. No Combine.",
+          "startState": "No notes.",
+          "endState": "Notes persist; typing quickly triggers one save, not one per keystroke (prove it with a print or a counter in a test).",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "iOS system design drill (one prompt from the plan, out loud, 45 min)",
+          "buildStudyHint": "A mobile system design write-up for the day's prompt (photo feed, chat, offline reader, image cache, etc.)"
+        },
+        {
+          "id": "2026-12-02",
+          "date": "2026-12-02",
+          "weekday": "Wed",
+          "kind": "leetcode",
+          "title": "Product of Array Except Self",
+          "study": {
+            "topic": "Pattern: Prefix / suffix",
+            "searchHint": "NeetCode or a well-known written explanation of the Prefix / suffix pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 238: Product of Array Except Self",
+              "url": "https://leetcode.com/problems/product-of-array-except-self/"
+            }
+          ],
+          "description": "Solve Product of Array Except Self in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0238_ProductOfArrayExceptSelf.swift\nfunc productExceptSelf(_ nums: [Int]) -> [Int] {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0238_ProductOfArrayExceptSelfTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0238_ProductOfArrayExceptSelf_example() {\n    #expect(productExceptSelf([1,2,3,4]) == [24,12,8,6])\n}",
+          "minutes": 45,
+          "build": "Connections",
+          "buildStudyHint": "Apple docs or a WWDC session for the Connections feature you're working on"
+        },
+        {
+          "id": "2026-12-03",
+          "date": "2026-12-03",
+          "weekday": "Thu",
+          "kind": "ios",
+          "title": "A 45-minute practice timer",
+          "study": {
+            "topic": "@Observable models and ContinuousClock",
+            "searchHint": "Apple docs for the Observation framework and ContinuousClock"
+          },
+          "links": [],
+          "description": "Add a timer to the detail screen: start, pause, reset, default 45 minutes. Store elapsed minutes on TaskProgress when the task is marked done.",
+          "startState": "No timer.",
+          "endState": "Timer counts down accurately in the foreground, survives navigating away and back, and records minutes spent.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "Behavioral: say 1-2 STAR stories out loud",
+          "buildStudyHint": "An article on the STAR method for senior engineer behavioral interviews"
+        },
+        {
+          "id": "2026-12-04",
+          "date": "2026-12-04",
+          "weekday": "Fri",
+          "kind": "leetcode",
+          "title": "Longest Consecutive Sequence",
+          "study": {
+            "topic": "Pattern: Hashing",
+            "searchHint": "NeetCode or a well-known written explanation of the Hashing pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 128: Longest Consecutive Sequence",
+              "url": "https://leetcode.com/problems/longest-consecutive-sequence/"
+            }
+          ],
+          "description": "Solve Longest Consecutive Sequence in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0128_LongestConsecutiveSequence.swift\nfunc longestConsecutive(_ nums: [Int]) -> Int {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0128_LongestConsecutiveSequenceTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0128_LongestConsecutiveSequence_example() {\n    #expect(longestConsecutive([100,4,200,1,3,2]) == 4)\n}",
+          "minutes": 45,
+          "build": "Blog: finish and publish if today is a publish day",
+          "buildStudyHint": "An article on promoting a technical blog post on LinkedIn"
+        },
+        {
+          "id": "2026-12-05",
+          "date": "2026-12-05",
+          "weekday": "Sat",
+          "kind": "livecoding",
+          "title": "Live-coding drill: paginated list from a JSON API",
+          "study": {
+            "topic": "URLSession async/await and Codable",
+            "searchHint": "Apple docs: URLSession data(from:) and JSONDecoder"
+          },
+          "links": [],
+          "description": "Add an Explore tab listing GitHub repositories for the search 'swift' using the public GitHub search API, loading the next page when the user nears the bottom. Timebox: 45 minutes from a blank file, no AI, no copying from earlier code. Narrate as if an interviewer is watching.",
+          "startState": "No Explore tab.",
+          "endState": "Explore shows repos with name, stars and owner; paging loads more without duplicates; errors show a retry button.",
+          "starterCode": "",
+          "minutes": 60,
+          "build": "Mock interview or a longer blog / Connections session",
+          "buildStudyHint": "An article on how iOS mock interviews are run and scored"
+        },
+        {
+          "id": "2026-12-06",
+          "date": "2026-12-06",
+          "weekday": "Sun",
+          "kind": "review",
+          "title": "Rest + weekly review",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Day off from coding. 15 minutes only: update the tracker, count the week's applications, outreach, screens and problems solved, compare them with the plan's checkpoints, and write down the first task for Monday.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "startDate": "2026-12-07",
+      "endDate": "2026-12-13",
+      "theme": "Two pointers, sliding window + caching",
+      "days": [
+        {
+          "id": "2026-12-07",
+          "date": "2026-12-07",
+          "weekday": "Mon",
+          "kind": "leetcode",
+          "title": "Valid Palindrome",
+          "study": {
+            "topic": "Pattern: Two pointers",
+            "searchHint": "NeetCode or a well-known written explanation of the Two pointers pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 125: Valid Palindrome",
+              "url": "https://leetcode.com/problems/valid-palindrome/"
+            }
+          ],
+          "description": "Solve Valid Palindrome in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0125_ValidPalindrome.swift\nfunc isPalindrome(_ s: String) -> Bool {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0125_ValidPalindromeTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0125_ValidPalindrome_example() {\n    #expect(isPalindrome(\"A man, a plan, a canal: Panama\"))\n}",
+          "minutes": 45,
+          "build": "Blog: draft or revise this week's post",
+          "buildStudyHint": "An article on technical blogging for developers (structure, titles, examples)"
+        },
+        {
+          "id": "2026-12-08",
+          "date": "2026-12-08",
+          "weekday": "Tue",
+          "kind": "ios",
+          "title": "Actor image cache",
+          "study": {
+            "topic": "Actors, reentrancy and in-flight de-duplication",
+            "searchHint": "Swift.org or a well-known article on Swift actor reentrancy"
+          },
+          "links": [],
+          "description": "Load owner avatars in Explore through your own actor cache instead of AsyncImage. Duplicate requests for the same URL must share one download.",
+          "startState": "Explore shows no avatars (or AsyncImage).",
+          "endState": "Avatars load via ImageCache; a unit test proves two concurrent requests trigger one fetch.",
+          "starterCode": "actor ImageCache {\n    static let shared = ImageCache()\n    private var images: [URL: Data] = [:]\n    private var inFlight: [URL: Task<Data, Error>] = [:]\n\n    func data(for url: URL) async throws -> Data {\n        // TODO: return cached data, join an in-flight task, or start one.\n        // Watch for actor reentrancy after each await.\n        fatalError(\"Not implemented\")\n    }\n}",
+          "minutes": 45,
+          "build": "iOS system design drill (one prompt from the plan, out loud, 45 min)",
+          "buildStudyHint": "A mobile system design write-up for the day's prompt (photo feed, chat, offline reader, image cache, etc.)"
+        },
+        {
+          "id": "2026-12-09",
+          "date": "2026-12-09",
+          "weekday": "Wed",
+          "kind": "leetcode",
+          "title": "3Sum",
+          "study": {
+            "topic": "Pattern: Two pointers",
+            "searchHint": "NeetCode or a well-known written explanation of the Two pointers pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 15: 3Sum",
+              "url": "https://leetcode.com/problems/3sum/"
+            }
+          ],
+          "description": "Solve 3Sum in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0015_3sum.swift\nfunc threeSum(_ nums: [Int]) -> [[Int]] {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0015_3sumTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0015_3sum_example() {\n    #expect(Set(threeSum([-1,0,1,2,-1,-4])) == [[-1,-1,2], [-1,0,1]])\n}",
+          "minutes": 45,
+          "build": "Connections",
+          "buildStudyHint": "Apple docs or a WWDC session for the Connections feature you're working on"
+        },
+        {
+          "id": "2026-12-10",
+          "date": "2026-12-10",
+          "weekday": "Thu",
+          "kind": "ios",
+          "title": "Stats screen with Swift Charts",
+          "study": {
+            "topic": "Swift Charts BarMark and LineMark",
+            "searchHint": "Apple Swift Charts documentation"
+          },
+          "links": [],
+          "description": "Add a Stats tab: problems solved per week (bar chart) and minutes practiced per week (line chart), from TaskProgress.",
+          "startState": "No stats.",
+          "endState": "Stats tab renders both charts from real data and updates when a task is marked done.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "Behavioral: say 1-2 STAR stories out loud",
+          "buildStudyHint": "An article on the STAR method for senior engineer behavioral interviews"
+        },
+        {
+          "id": "2026-12-11",
+          "date": "2026-12-11",
+          "weekday": "Fri",
+          "kind": "leetcode",
+          "title": "Longest Substring Without Repeating Characters",
+          "study": {
+            "topic": "Pattern: Sliding window",
+            "searchHint": "NeetCode or a well-known written explanation of the Sliding window pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 3: Longest Substring Without Repeating Characters",
+              "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/"
+            }
+          ],
+          "description": "Solve Longest Substring Without Repeating Characters in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0003_LongestSubstringWithoutRepeatingCharacters.swift\nfunc lengthOfLongestSubstring(_ s: String) -> Int {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0003_LongestSubstringWithoutRepeatingCharactersTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0003_LongestSubstringWithoutRepeatingCharacters_example() {\n    #expect(lengthOfLongestSubstring(\"abcabcbb\") == 3)\n}",
+          "minutes": 45,
+          "build": "Blog: finish and publish if today is a publish day",
+          "buildStudyHint": "An article on promoting a technical blog post on LinkedIn"
+        },
+        {
+          "id": "2026-12-12",
+          "date": "2026-12-12",
+          "weekday": "Sat",
+          "kind": "livecoding",
+          "title": "Live-coding drill: search with debounce",
+          "study": {
+            "topic": "Cancellation with .task(id:)",
+            "searchHint": "Apple docs: View.task(id:priority:_:)"
+          },
+          "links": [],
+          "description": "Add a search field to Explore that queries the API 400 ms after typing stops and cancels the previous request. Timebox: 45 minutes from a blank file, no AI, no copying from earlier code. Narrate as if an interviewer is watching.",
+          "startState": "Explore uses a fixed query.",
+          "endState": "Typing searches; stale responses never overwrite newer ones.",
+          "starterCode": "",
+          "minutes": 60,
+          "build": "Mock interview or a longer blog / Connections session",
+          "buildStudyHint": "An article on how iOS mock interviews are run and scored"
+        },
+        {
+          "id": "2026-12-13",
+          "date": "2026-12-13",
+          "weekday": "Sun",
+          "kind": "review",
+          "title": "Rest + weekly review",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Day off from coding. 15 minutes only: update the tracker, count the week's applications, outreach, screens and problems solved, compare them with the plan's checkpoints, and write down the first task for Monday.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "startDate": "2026-12-14",
+      "endDate": "2026-12-20",
+      "theme": "Stack, binary search + Swift 6",
+      "days": [
+        {
+          "id": "2026-12-14",
+          "date": "2026-12-14",
+          "weekday": "Mon",
+          "kind": "leetcode",
+          "title": "Valid Parentheses",
+          "study": {
+            "topic": "Pattern: Stack",
+            "searchHint": "NeetCode or a well-known written explanation of the Stack pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 20: Valid Parentheses",
+              "url": "https://leetcode.com/problems/valid-parentheses/"
+            }
+          ],
+          "description": "Solve Valid Parentheses in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0020_ValidParentheses.swift\nfunc isValid(_ s: String) -> Bool {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0020_ValidParenthesesTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0020_ValidParentheses_example() {\n    #expect(isValid(\"()[]{}\"))\n    #expect(!isValid(\"(]\"))\n}",
+          "minutes": 45,
+          "build": "Blog: draft or revise this week's post",
+          "buildStudyHint": "An article on technical blogging for developers (structure, titles, examples)"
+        },
+        {
+          "id": "2026-12-15",
+          "date": "2026-12-15",
+          "weekday": "Tue",
+          "kind": "ios",
+          "title": "Turn on Swift 6 strict concurrency",
+          "study": {
+            "topic": "Sendable, global actors and data-race safety",
+            "searchHint": "The Swift 6 migration guide on swift.org"
+          },
+          "links": [],
+          "description": "Switch the app and test targets to the Swift 6 language mode. Fix every error properly (no @unchecked Sendable unless you can defend it out loud).",
+          "startState": "Swift 5 mode, possibly with warnings.",
+          "endState": "Swift 6 mode, zero errors and warnings; a short note in README on each fix and why.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "iOS system design drill (one prompt from the plan, out loud, 45 min)",
+          "buildStudyHint": "A mobile system design write-up for the day's prompt (photo feed, chat, offline reader, image cache, etc.)"
+        },
+        {
+          "id": "2026-12-16",
+          "date": "2026-12-16",
+          "weekday": "Wed",
+          "kind": "leetcode",
+          "title": "Binary Search + Search in Rotated Sorted Array",
+          "study": {
+            "topic": "Pattern: Binary search",
+            "searchHint": "NeetCode or a well-known written explanation of the Binary search pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 704: Binary Search",
+              "url": "https://leetcode.com/problems/binary-search/"
+            },
+            {
+              "title": "LeetCode 33: Search in Rotated Sorted Array",
+              "url": "https://leetcode.com/problems/search-in-rotated-sorted-array/"
+            }
+          ],
+          "description": "Solve Binary Search + Search in Rotated Sorted Array in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0704_BinarySearch.swift\nfunc search(_ nums: [Int], _ target: Int) -> Int {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0704_BinarySearchTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0704_BinarySearch_example() {\n    #expect(search([-1,0,3,5,9,12], 9) == 4)\n}\n\n// DailyDrills/Problems/P0033_SearchInRotatedSortedArray.swift\nfunc searchRotated(_ nums: [Int], _ target: Int) -> Int {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0033_SearchInRotatedSortedArrayTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0033_SearchInRotatedSortedArray_example() {\n    #expect(searchRotated([4,5,6,7,0,1,2], 0) == 4)\n}",
+          "minutes": 45,
+          "build": "Connections",
+          "buildStudyHint": "Apple docs or a WWDC session for the Connections feature you're working on"
+        },
+        {
+          "id": "2026-12-17",
+          "date": "2026-12-17",
+          "weekday": "Thu",
+          "kind": "ios",
+          "title": "Swift Testing for the app's logic",
+          "study": {
+            "topic": "Swift Testing: @Test, #expect, parameterized tests",
+            "searchHint": "Apple docs 'Swift Testing' and the WWDC24 'Meet Swift Testing' session"
+          },
+          "links": [],
+          "description": "Write tests for curriculum decoding, the Today lookup, the week completion count, and the search filter. Use at least one parameterized test.",
+          "startState": "One decode test.",
+          "endState": "10+ meaningful tests pass; a bug found while testing is fixed.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "Behavioral: say 1-2 STAR stories out loud",
+          "buildStudyHint": "An article on the STAR method for senior engineer behavioral interviews"
+        },
+        {
+          "id": "2026-12-18",
+          "date": "2026-12-18",
+          "weekday": "Fri",
+          "kind": "leetcode",
+          "title": "Review day: re-solve a miss",
+          "study": {
+            "topic": "Your misses list",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Re-solve the hardest problem from weeks 1-4 from scratch, timed, without looking at your old solution.",
+          "startState": "Old solution hidden.",
+          "endState": "Solved in under 25 minutes with a clean explanation.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "Blog: finish and publish if today is a publish day",
+          "buildStudyHint": "An article on promoting a technical blog post on LinkedIn"
+        },
+        {
+          "id": "2026-12-19",
+          "date": "2026-12-19",
+          "weekday": "Sat",
+          "kind": "livecoding",
+          "title": "Live-coding drill: form with validation",
+          "study": {
+            "topic": "SwiftUI Form and validation",
+            "searchHint": "Hacking with Swift: SwiftUI forms and validation"
+          },
+          "links": [],
+          "description": "Add a 'Log mock interview' form: date, company, round type (picker), rating 1-5, notes. Disable Save until valid. Persist with SwiftData. Timebox: 45 minutes from a blank file, no AI, no copying from earlier code. Narrate as if an interviewer is watching.",
+          "startState": "No form.",
+          "endState": "Valid entries save and list under a new Interviews section; invalid input shows inline errors.",
+          "starterCode": "",
+          "minutes": 60,
+          "build": "Mock interview or a longer blog / Connections session",
+          "buildStudyHint": "An article on how iOS mock interviews are run and scored"
+        },
+        {
+          "id": "2026-12-20",
+          "date": "2026-12-20",
+          "weekday": "Sun",
+          "kind": "review",
+          "title": "Rest + weekly review",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Day off from coding. 15 minutes only: update the tracker, count the week's applications, outreach, screens and problems solved, compare them with the plan's checkpoints, and write down the first task for Monday.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "startDate": "2026-12-21",
+      "endDate": "2026-12-27",
+      "theme": "Holiday week, lighter: linked lists + notifications",
+      "days": [
+        {
+          "id": "2026-12-21",
+          "date": "2026-12-21",
+          "weekday": "Mon",
+          "kind": "leetcode",
+          "title": "Reverse Linked List",
+          "study": {
+            "topic": "Pattern: Linked list",
+            "searchHint": "NeetCode or a well-known written explanation of the Linked list pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 206: Reverse Linked List",
+              "url": "https://leetcode.com/problems/reverse-linked-list/"
+            }
+          ],
+          "description": "Solve Reverse Linked List in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0206_ReverseLinkedList.swift\nfinal class ListNode {\n    var val: Int\n    var next: ListNode?\n    init(_ val: Int, _ next: ListNode? = nil) { self.val = val; self.next = next }\n}\n\nfunc reverseList(_ head: ListNode?) -> ListNode? {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0206_ReverseLinkedListTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0206_ReverseLinkedList_example() {\n    // Build 1->2->3, reverse, expect 3->2->1\n}",
+          "minutes": 45,
+          "build": "Blog: draft or revise this week's post",
+          "buildStudyHint": "An article on technical blogging for developers (structure, titles, examples)"
+        },
+        {
+          "id": "2026-12-22",
+          "date": "2026-12-22",
+          "weekday": "Tue",
+          "kind": "ios",
+          "title": "Morning reminder notification",
+          "study": {
+            "topic": "UserNotifications: authorization and UNCalendarNotificationTrigger",
+            "searchHint": "Apple docs for UNUserNotificationCenter"
+          },
+          "links": [],
+          "description": "Ask for notification permission from a Settings screen and schedule a daily 6:00 AM reminder showing that day's task title.",
+          "startState": "No notifications.",
+          "endState": "Reminder fires at the chosen time with the right title; turning it off removes pending requests.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "iOS system design drill (one prompt from the plan, out loud, 45 min)",
+          "buildStudyHint": "A mobile system design write-up for the day's prompt (photo feed, chat, offline reader, image cache, etc.)"
+        },
+        {
+          "id": "2026-12-23",
+          "date": "2026-12-23",
+          "weekday": "Wed",
+          "kind": "leetcode",
+          "title": "Merge Two Sorted Lists",
+          "study": {
+            "topic": "Pattern: Linked list",
+            "searchHint": "NeetCode or a well-known written explanation of the Linked list pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 21: Merge Two Sorted Lists",
+              "url": "https://leetcode.com/problems/merge-two-sorted-lists/"
+            }
+          ],
+          "description": "Solve Merge Two Sorted Lists in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0021_MergeTwoSortedLists.swift\nfunc mergeTwoLists(_ list1: ListNode?, _ list2: ListNode?) -> ListNode? {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0021_MergeTwoSortedListsTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0021_MergeTwoSortedLists_example() {\n    // Merge 1->2->4 and 1->3->4, expect 1->1->2->3->4->4\n}",
+          "minutes": 45,
+          "build": "Connections",
+          "buildStudyHint": "Apple docs or a WWDC session for the Connections feature you're working on"
+        },
+        {
+          "id": "2026-12-24",
+          "date": "2026-12-24",
+          "weekday": "Thu",
+          "kind": "review",
+          "title": "Christmas Eve: off",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Holiday. Optional: 15 minutes reading your misses list.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        },
+        {
+          "id": "2026-12-25",
+          "date": "2026-12-25",
+          "weekday": "Fri",
+          "kind": "review",
+          "title": "Christmas: off",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Holiday. No tasks.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        },
+        {
+          "id": "2026-12-26",
+          "date": "2026-12-26",
+          "weekday": "Sat",
+          "kind": "livecoding",
+          "title": "Light drill: Settings with @AppStorage",
+          "study": {
+            "topic": "@AppStorage and confirmationDialog",
+            "searchHint": "Apple docs: AppStorage"
+          },
+          "links": [],
+          "description": "Build a Settings screen: reminder time, default timer length, and a 'Reset progress' button with a confirmation dialog. Timebox: 45 minutes from a blank file, no AI, no copying from earlier code. Narrate as if an interviewer is watching.",
+          "startState": "Settings holds only the notification toggle.",
+          "endState": "All settings persist and take effect immediately.",
+          "starterCode": "",
+          "minutes": 60,
+          "build": "Mock interview or a longer blog / Connections session",
+          "buildStudyHint": "An article on how iOS mock interviews are run and scored"
+        },
+        {
+          "id": "2026-12-27",
+          "date": "2026-12-27",
+          "weekday": "Sun",
+          "kind": "review",
+          "title": "Rest + weekly review",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Day off from coding. 15 minutes only: update the tracker, count the week's applications, outreach, screens and problems solved, compare them with the plan's checkpoints, and write down the first task for Monday.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        }
+      ]
+    },
+    {
+      "week": 6,
+      "startDate": "2026-12-28",
+      "endDate": "2027-01-03",
+      "theme": "Trees + widgets and intents",
+      "days": [
+        {
+          "id": "2026-12-28",
+          "date": "2026-12-28",
+          "weekday": "Mon",
+          "kind": "leetcode",
+          "title": "Linked List Cycle + Invert Binary Tree",
+          "study": {
+            "topic": "Pattern: Fast and slow pointers; Trees / DFS",
+            "searchHint": "NeetCode or a well-known written explanation of the Fast and slow pointers pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 141: Linked List Cycle",
+              "url": "https://leetcode.com/problems/linked-list-cycle/"
+            },
+            {
+              "title": "LeetCode 226: Invert Binary Tree",
+              "url": "https://leetcode.com/problems/invert-binary-tree/"
+            }
+          ],
+          "description": "Solve Linked List Cycle + Invert Binary Tree in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0141_LinkedListCycle.swift\nfunc hasCycle(_ head: ListNode?) -> Bool {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0141_LinkedListCycleTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0141_LinkedListCycle_example() {\n    // Build a list whose tail points back to node 2; expect true\n}\n\n// DailyDrills/Problems/P0226_InvertBinaryTree.swift\nfinal class TreeNode {\n    var val: Int\n    var left: TreeNode?\n    var right: TreeNode?\n    init(_ val: Int, _ left: TreeNode? = nil, _ right: TreeNode? = nil) { self.val = val; self.left = left; self.right = right }\n}\n\nfunc invertTree(_ root: TreeNode?) -> TreeNode? {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0226_InvertBinaryTreeTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0226_InvertBinaryTree_example() {\n    // Invert [4,2,7,1,3,6,9], expect level order [4,7,2,9,6,3,1]\n}",
+          "minutes": 45,
+          "build": "Blog: draft or revise this week's post",
+          "buildStudyHint": "An article on technical blogging for developers (structure, titles, examples)"
+        },
+        {
+          "id": "2026-12-29",
+          "date": "2026-12-29",
+          "weekday": "Tue",
+          "kind": "ios",
+          "title": "Today widget",
+          "study": {
+            "topic": "WidgetKit timelines and App Groups",
+            "searchHint": "Apple docs 'Creating a widget extension'"
+          },
+          "links": [],
+          "description": "Add a widget showing today's task title, kind and done state. Share the SwiftData store through an App Group.",
+          "startState": "No widget.",
+          "endState": "Widget shows the right task each day and reflects Done after the app marks it.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "iOS system design drill (one prompt from the plan, out loud, 45 min)",
+          "buildStudyHint": "A mobile system design write-up for the day's prompt (photo feed, chat, offline reader, image cache, etc.)"
+        },
+        {
+          "id": "2026-12-30",
+          "date": "2026-12-30",
+          "weekday": "Wed",
+          "kind": "leetcode",
+          "title": "Maximum Depth of Binary Tree",
+          "study": {
+            "topic": "Pattern: Trees / DFS",
+            "searchHint": "NeetCode or a well-known written explanation of the Trees / DFS pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 104: Maximum Depth of Binary Tree",
+              "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/"
+            }
+          ],
+          "description": "Solve Maximum Depth of Binary Tree in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0104_MaximumDepthOfBinaryTree.swift\nfunc maxDepth(_ root: TreeNode?) -> Int {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0104_MaximumDepthOfBinaryTreeTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0104_MaximumDepthOfBinaryTree_example() {\n    // [3,9,20,nil,nil,15,7] -> 3\n}",
+          "minutes": 45,
+          "build": "Connections",
+          "buildStudyHint": "Apple docs or a WWDC session for the Connections feature you're working on"
+        },
+        {
+          "id": "2026-12-31",
+          "date": "2026-12-31",
+          "weekday": "Thu",
+          "kind": "ios",
+          "title": "App Intent: mark today done",
+          "study": {
+            "topic": "App Intents and interactive widgets",
+            "searchHint": "Apple docs for App Intents and the WWDC23 'Bring widgets to life' session"
+          },
+          "links": [],
+          "description": "Add a MarkTodayDoneIntent usable from Shortcuts and as a button in the widget.",
+          "startState": "Widget is read-only.",
+          "endState": "Tapping the widget button or running the shortcut marks today done without opening the app.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "Behavioral: say 1-2 STAR stories out loud",
+          "buildStudyHint": "An article on the STAR method for senior engineer behavioral interviews"
+        },
+        {
+          "id": "2027-01-01",
+          "date": "2027-01-01",
+          "weekday": "Fri",
+          "kind": "leetcode",
+          "title": "Binary Tree Level Order Traversal",
+          "study": {
+            "topic": "Pattern: Trees / BFS",
+            "searchHint": "NeetCode or a well-known written explanation of the Trees / BFS pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 102: Binary Tree Level Order Traversal",
+              "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/"
+            }
+          ],
+          "description": "Solve Binary Tree Level Order Traversal in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0102_BinaryTreeLevelOrderTraversal.swift\nfunc levelOrder(_ root: TreeNode?) -> [[Int]] {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0102_BinaryTreeLevelOrderTraversalTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0102_BinaryTreeLevelOrderTraversal_example() {\n    // [3,9,20,nil,nil,15,7] -> [[3],[9,20],[15,7]]\n}",
+          "minutes": 45,
+          "build": "Blog: finish and publish if today is a publish day",
+          "buildStudyHint": "An article on promoting a technical blog post on LinkedIn"
+        },
+        {
+          "id": "2027-01-02",
+          "date": "2027-01-02",
+          "weekday": "Sat",
+          "kind": "livecoding",
+          "title": "Live-coding drill: photo grid",
+          "study": {
+            "topic": "LazyVGrid and image loading",
+            "searchHint": "Apple docs: LazyVGrid"
+          },
+          "links": [],
+          "description": "Add a grid screen of 200 remote images (picsum.photos) in a LazyVGrid, using your ImageCache, with placeholder and failure states. Timebox: 45 minutes from a blank file, no AI, no copying from earlier code. Narrate as if an interviewer is watching.",
+          "startState": "No grid.",
+          "endState": "Smooth scrolling, no duplicate downloads, memory stays flat when scrolling back and forth.",
+          "starterCode": "",
+          "minutes": 60,
+          "build": "Mock interview or a longer blog / Connections session",
+          "buildStudyHint": "An article on how iOS mock interviews are run and scored"
+        },
+        {
+          "id": "2027-01-03",
+          "date": "2027-01-03",
+          "weekday": "Sun",
+          "kind": "review",
+          "title": "Rest + weekly review",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Day off from coding. 15 minutes only: update the tracker, count the week's applications, outreach, screens and problems solved, compare them with the plan's checkpoints, and write down the first task for Monday.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        }
+      ]
+    },
+    {
+      "week": 7,
+      "startDate": "2027-01-04",
+      "endDate": "2027-01-10",
+      "theme": "Surge begins: BST, trie + data layer",
+      "days": [
+        {
+          "id": "2027-01-04",
+          "date": "2027-01-04",
+          "weekday": "Mon",
+          "kind": "leetcode",
+          "title": "Validate Binary Search Tree",
+          "study": {
+            "topic": "Pattern: Trees / DFS with bounds",
+            "searchHint": "NeetCode or a well-known written explanation of the Trees / DFS with bounds pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 98: Validate Binary Search Tree",
+              "url": "https://leetcode.com/problems/validate-binary-search-tree/"
+            }
+          ],
+          "description": "Solve Validate Binary Search Tree in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0098_ValidateBinarySearchTree.swift\nfunc isValidBST(_ root: TreeNode?) -> Bool {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0098_ValidateBinarySearchTreeTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0098_ValidateBinarySearchTree_example() {\n    // [2,1,3] -> true, [5,1,4,nil,nil,3,6] -> false\n}",
+          "minutes": 45,
+          "build": "Blog: draft or revise this week's post",
+          "buildStudyHint": "An article on technical blogging for developers (structure, titles, examples)"
+        },
+        {
+          "id": "2027-01-05",
+          "date": "2027-01-05",
+          "weekday": "Tue",
+          "kind": "ios",
+          "title": "Remote curriculum with a repository",
+          "study": {
+            "topic": "Repository pattern, ETag caching and fallbacks",
+            "searchHint": "An article on the repository pattern in Swift and HTTP ETag basics (MDN)"
+          },
+          "links": [],
+          "description": "Put curriculum.json in a public GitHub gist or repo. Add a CurriculumRepository that fetches it, caches it on disk with its ETag, and falls back to the bundled copy offline.",
+          "startState": "Curriculum only from the bundle.",
+          "endState": "App loads remote curriculum, sends If-None-Match on refresh, and works in Airplane Mode.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "iOS system design drill (one prompt from the plan, out loud, 45 min)",
+          "buildStudyHint": "A mobile system design write-up for the day's prompt (photo feed, chat, offline reader, image cache, etc.)"
+        },
+        {
+          "id": "2027-01-06",
+          "date": "2027-01-06",
+          "weekday": "Wed",
+          "kind": "leetcode",
+          "title": "Lowest Common Ancestor of a BST",
+          "study": {
+            "topic": "Pattern: Trees / BST property",
+            "searchHint": "NeetCode or a well-known written explanation of the Trees / BST property pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 235: Lowest Common Ancestor of a BST",
+              "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/"
+            }
+          ],
+          "description": "Solve Lowest Common Ancestor of a BST in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0235_LowestCommonAncestorOfABinarySearchTree.swift\nfunc lowestCommonAncestor(_ root: TreeNode?, _ p: TreeNode?, _ q: TreeNode?) -> TreeNode? {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0235_LowestCommonAncestorOfABinarySearchTreeTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0235_LowestCommonAncestorOfABinarySearchTree_example() {\n    // In [6,2,8,0,4,7,9], LCA(2, 8) is 6\n}",
+          "minutes": 45,
+          "build": "Connections",
+          "buildStudyHint": "Apple docs or a WWDC session for the Connections feature you're working on"
+        },
+        {
+          "id": "2027-01-07",
+          "date": "2027-01-07",
+          "weekday": "Thu",
+          "kind": "ios",
+          "title": "Loading, empty and error states",
+          "study": {
+            "topic": "Modeling view state with enums",
+            "searchHint": "An article on view state enums in SwiftUI"
+          },
+          "links": [],
+          "description": "Use a ViewState enum for curriculum loading and Explore. Show a spinner, an empty state and an error with retry everywhere data loads.",
+          "startState": "Ad hoc optionals and booleans.",
+          "endState": "Every async screen renders all states; a test covers the state transitions.",
+          "starterCode": "enum ViewState<Value> {\n    case idle\n    case loading\n    case loaded(Value)\n    case empty\n    case failed(Error)\n}",
+          "minutes": 45,
+          "build": "Behavioral: say 1-2 STAR stories out loud",
+          "buildStudyHint": "An article on the STAR method for senior engineer behavioral interviews"
+        },
+        {
+          "id": "2027-01-08",
+          "date": "2027-01-08",
+          "weekday": "Fri",
+          "kind": "leetcode",
+          "title": "Implement Trie (Prefix Tree)",
+          "study": {
+            "topic": "Pattern: Trie",
+            "searchHint": "NeetCode or a well-known written explanation of the Trie pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 208: Implement Trie (Prefix Tree)",
+              "url": "https://leetcode.com/problems/implement-trie-prefix-tree/"
+            }
+          ],
+          "description": "Solve Implement Trie (Prefix Tree) in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0208_ImplementTriePrefixTree.swift\nfinal class Trie {\n    init() {}\n    func insert(_ word: String) {}\n    func search(_ word: String) -> Bool { false }\n    func startsWith(_ prefix: String) -> Bool { false }\n}\n\n// DailyDrillsTests/P0208_ImplementTriePrefixTreeTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0208_ImplementTriePrefixTree_example() {\n    let t = Trie(); t.insert(\"apple\")\n    #expect(t.search(\"apple\")); #expect(!t.search(\"app\")); #expect(t.startsWith(\"app\"))\n}",
+          "minutes": 45,
+          "build": "Blog: finish and publish if today is a publish day",
+          "buildStudyHint": "An article on promoting a technical blog post on LinkedIn"
+        },
+        {
+          "id": "2027-01-09",
+          "date": "2027-01-09",
+          "weekday": "Sat",
+          "kind": "livecoding",
+          "title": "Live-coding drill: offline-first to-do list",
+          "study": {
+            "topic": "Offline-first design",
+            "searchHint": "An article on offline-first iOS app architecture"
+          },
+          "links": [],
+          "description": "Build a to-do list that saves locally first and 'syncs' to a fake server (an actor with random delays and failures), retrying failed items. Timebox: 45 minutes from a blank file, no AI, no copying from earlier code. Narrate as if an interviewer is watching.",
+          "startState": "Nothing.",
+          "endState": "Items never get lost; sync status shows per item; retries back off.",
+          "starterCode": "",
+          "minutes": 60,
+          "build": "Mock interview or a longer blog / Connections session",
+          "buildStudyHint": "An article on how iOS mock interviews are run and scored"
+        },
+        {
+          "id": "2027-01-10",
+          "date": "2027-01-10",
+          "weekday": "Sun",
+          "kind": "review",
+          "title": "Rest + weekly review",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Day off from coding. 15 minutes only: update the tracker, count the week's applications, outreach, screens and problems solved, compare them with the plan's checkpoints, and write down the first task for Monday.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        }
+      ]
+    },
+    {
+      "week": 8,
+      "startDate": "2027-01-11",
+      "endDate": "2027-01-17",
+      "theme": "Heaps, islands + testable architecture",
+      "days": [
+        {
+          "id": "2027-01-11",
+          "date": "2027-01-11",
+          "weekday": "Mon",
+          "kind": "leetcode",
+          "title": "Kth Largest Element in an Array",
+          "study": {
+            "topic": "Pattern: Heap (write your own)",
+            "searchHint": "NeetCode or a well-known written explanation of the Heap (write your own) pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 215: Kth Largest Element in an Array",
+              "url": "https://leetcode.com/problems/kth-largest-element-in-an-array/"
+            }
+          ],
+          "description": "Solve Kth Largest Element in an Array in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0215_KthLargestElementInAnArray.swift\nfunc findKthLargest(_ nums: [Int], _ k: Int) -> Int {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0215_KthLargestElementInAnArrayTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0215_KthLargestElementInAnArray_example() {\n    #expect(findKthLargest([3,2,1,5,6,4], 2) == 5)\n}",
+          "minutes": 45,
+          "build": "Blog: draft or revise this week's post",
+          "buildStudyHint": "An article on technical blogging for developers (structure, titles, examples)"
+        },
+        {
+          "id": "2027-01-12",
+          "date": "2027-01-12",
+          "weekday": "Tue",
+          "kind": "ios",
+          "title": "Dependency injection for testability",
+          "study": {
+            "topic": "Protocols, environment injection and test fakes",
+            "searchHint": "An article on dependency injection in SwiftUI (Point-Free or SwiftLee)"
+          },
+          "links": [],
+          "description": "Inject the clock, network client and store via protocols and the SwiftUI environment. Write tests for the Today logic with a fixed fake clock.",
+          "startState": "Concrete singletons.",
+          "endState": "No view or model reaches a singleton directly; Today tests pass with a fake clock for any date.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "iOS system design drill (one prompt from the plan, out loud, 45 min)",
+          "buildStudyHint": "A mobile system design write-up for the day's prompt (photo feed, chat, offline reader, image cache, etc.)"
+        },
+        {
+          "id": "2027-01-13",
+          "date": "2027-01-13",
+          "weekday": "Wed",
+          "kind": "leetcode",
+          "title": "K Closest Points to Origin",
+          "study": {
+            "topic": "Pattern: Heap",
+            "searchHint": "NeetCode or a well-known written explanation of the Heap pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 973: K Closest Points to Origin",
+              "url": "https://leetcode.com/problems/k-closest-points-to-origin/"
+            }
+          ],
+          "description": "Solve K Closest Points to Origin in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0973_KClosestPointsToOrigin.swift\nfunc kClosest(_ points: [[Int]], _ k: Int) -> [[Int]] {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0973_KClosestPointsToOriginTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0973_KClosestPointsToOrigin_example() {\n    #expect(kClosest([[1,3],[-2,2]], 1) == [[-2,2]])\n}",
+          "minutes": 45,
+          "build": "Connections",
+          "buildStudyHint": "Apple docs or a WWDC session for the Connections feature you're working on"
+        },
+        {
+          "id": "2027-01-14",
+          "date": "2027-01-14",
+          "weekday": "Thu",
+          "kind": "ios",
+          "title": "Deep links and navigation state",
+          "study": {
+            "topic": "NavigationStack, NavigationPath and onOpenURL",
+            "searchHint": "Apple docs for NavigationStack and NavigationPath"
+          },
+          "links": [],
+          "description": "Support dailydrills://day/2026-12-01 links that open that day's detail, and restore the navigation path after relaunch.",
+          "startState": "Navigation resets on launch.",
+          "endState": "Deep links open the right screen from Safari; relaunch restores where you were.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "Behavioral: say 1-2 STAR stories out loud",
+          "buildStudyHint": "An article on the STAR method for senior engineer behavioral interviews"
+        },
+        {
+          "id": "2027-01-15",
+          "date": "2027-01-15",
+          "weekday": "Fri",
+          "kind": "leetcode",
+          "title": "Number of Islands",
+          "study": {
+            "topic": "Pattern: Graphs / grid DFS or BFS",
+            "searchHint": "NeetCode or a well-known written explanation of the Graphs / grid DFS or BFS pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 200: Number of Islands",
+              "url": "https://leetcode.com/problems/number-of-islands/"
+            }
+          ],
+          "description": "Solve Number of Islands in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0200_NumberOfIslands.swift\nfunc numIslands(_ grid: [[Character]]) -> Int {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0200_NumberOfIslandsTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0200_NumberOfIslands_example() {\n    // The 4x5 grid with one island -> 1\n}",
+          "minutes": 45,
+          "build": "Blog: finish and publish if today is a publish day",
+          "buildStudyHint": "An article on promoting a technical blog post on LinkedIn"
+        },
+        {
+          "id": "2027-01-16",
+          "date": "2027-01-16",
+          "weekday": "Sat",
+          "kind": "livecoding",
+          "title": "Live-coding drill: infinite scroll done right",
+          "study": {
+            "topic": "Pagination patterns",
+            "searchHint": "An article on SwiftUI infinite scrolling with onAppear thresholds"
+          },
+          "links": [],
+          "description": "Build an infinite feed from a fake paged API with a prefetch threshold, duplicate protection, and pull to refresh. Timebox: 45 minutes from a blank file, no AI, no copying from earlier code. Narrate as if an interviewer is watching.",
+          "startState": "Nothing.",
+          "endState": "No duplicate pages, no double loads, refresh resets cleanly.",
+          "starterCode": "",
+          "minutes": 60,
+          "build": "Mock interview or a longer blog / Connections session",
+          "buildStudyHint": "An article on how iOS mock interviews are run and scored"
+        },
+        {
+          "id": "2027-01-17",
+          "date": "2027-01-17",
+          "weekday": "Sun",
+          "kind": "review",
+          "title": "Rest + weekly review",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Day off from coding. 15 minutes only: update the tracker, count the week's applications, outreach, screens and problems solved, compare them with the plan's checkpoints, and write down the first task for Monday.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        }
+      ]
+    },
+    {
+      "week": 9,
+      "startDate": "2027-01-18",
+      "endDate": "2027-01-24",
+      "theme": "Graphs + performance and accessibility",
+      "days": [
+        {
+          "id": "2027-01-18",
+          "date": "2027-01-18",
+          "weekday": "Mon",
+          "kind": "leetcode",
+          "title": "Clone Graph",
+          "study": {
+            "topic": "Pattern: Graphs / BFS + hash map",
+            "searchHint": "NeetCode or a well-known written explanation of the Graphs / BFS + hash map pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 133: Clone Graph",
+              "url": "https://leetcode.com/problems/clone-graph/"
+            }
+          ],
+          "description": "Solve Clone Graph in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0133_CloneGraph.swift\nfinal class Node {\n    var val: Int\n    var neighbors: [Node?]\n    init(_ val: Int) { self.val = val; self.neighbors = [] }\n}\n\nfunc cloneGraph(_ node: Node?) -> Node? {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0133_CloneGraphTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0133_CloneGraph_example() {\n    // Clone a 4-node cycle; no node in the clone is === a node in the original\n}",
+          "minutes": 45,
+          "build": "Blog: draft or revise this week's post",
+          "buildStudyHint": "An article on technical blogging for developers (structure, titles, examples)"
+        },
+        {
+          "id": "2027-01-19",
+          "date": "2027-01-19",
+          "weekday": "Tue",
+          "kind": "ios",
+          "title": "Profile and speed up the list",
+          "study": {
+            "topic": "Instruments Time Profiler and os_signpost",
+            "searchHint": "Apple docs 'Improving app responsiveness' and the SwiftUI Instruments template"
+          },
+          "links": [],
+          "description": "Profile the Weeks list and Stats with Instruments. Add signposts around curriculum decoding. Fix the biggest cost you find.",
+          "startState": "Unmeasured.",
+          "endState": "Before and after numbers written in README; at least one measurable improvement.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "iOS system design drill (one prompt from the plan, out loud, 45 min)",
+          "buildStudyHint": "A mobile system design write-up for the day's prompt (photo feed, chat, offline reader, image cache, etc.)"
+        },
+        {
+          "id": "2027-01-20",
+          "date": "2027-01-20",
+          "weekday": "Wed",
+          "kind": "leetcode",
+          "title": "Course Schedule",
+          "study": {
+            "topic": "Pattern: Graphs / topological sort",
+            "searchHint": "NeetCode or a well-known written explanation of the Graphs / topological sort pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 207: Course Schedule",
+              "url": "https://leetcode.com/problems/course-schedule/"
+            }
+          ],
+          "description": "Solve Course Schedule in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0207_CourseSchedule.swift\nfunc canFinish(_ numCourses: Int, _ prerequisites: [[Int]]) -> Bool {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0207_CourseScheduleTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0207_CourseSchedule_example() {\n    #expect(canFinish(2, [[1,0]]))\n    #expect(!canFinish(2, [[1,0],[0,1]]))\n}",
+          "minutes": 45,
+          "build": "Connections",
+          "buildStudyHint": "Apple docs or a WWDC session for the Connections feature you're working on"
+        },
+        {
+          "id": "2027-01-21",
+          "date": "2027-01-21",
+          "weekday": "Thu",
+          "kind": "ios",
+          "title": "Accessibility pass",
+          "study": {
+            "topic": "Dynamic Type, VoiceOver and accessibility modifiers",
+            "searchHint": "Apple Human Interface Guidelines: Accessibility"
+          },
+          "links": [],
+          "description": "Audit every screen with VoiceOver and the Accessibility Inspector. Support the largest Dynamic Type sizes and add labels, values and hints where needed.",
+          "startState": "Untested with VoiceOver.",
+          "endState": "Every screen is usable with VoiceOver and at AX5 text size; Inspector audit is clean.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "Behavioral: say 1-2 STAR stories out loud",
+          "buildStudyHint": "An article on the STAR method for senior engineer behavioral interviews"
+        },
+        {
+          "id": "2027-01-22",
+          "date": "2027-01-22",
+          "weekday": "Fri",
+          "kind": "leetcode",
+          "title": "Rotting Oranges",
+          "study": {
+            "topic": "Pattern: Graphs / multi-source BFS",
+            "searchHint": "NeetCode or a well-known written explanation of the Graphs / multi-source BFS pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 994: Rotting Oranges",
+              "url": "https://leetcode.com/problems/rotting-oranges/"
+            }
+          ],
+          "description": "Solve Rotting Oranges in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0994_RottingOranges.swift\nfunc orangesRotting(_ grid: [[Int]]) -> Int {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0994_RottingOrangesTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0994_RottingOranges_example() {\n    #expect(orangesRotting([[2,1,1],[1,1,0],[0,1,1]]) == 4)\n}",
+          "minutes": 45,
+          "build": "Blog: finish and publish if today is a publish day",
+          "buildStudyHint": "An article on promoting a technical blog post on LinkedIn"
+        },
+        {
+          "id": "2027-01-23",
+          "date": "2027-01-23",
+          "weekday": "Sat",
+          "kind": "livecoding",
+          "title": "Live-coding drill: UIKit interop",
+          "study": {
+            "topic": "UICollectionViewCompositionalLayout and diffable data sources",
+            "searchHint": "Apple docs: UICollectionViewDiffableDataSource"
+          },
+          "links": [],
+          "description": "Rebuild the Explore list as a UICollectionView with a compositional layout and diffable data source, wrapped in UIViewControllerRepresentable. Timebox: 45 minutes from a blank file, no AI, no copying from earlier code. Narrate as if an interviewer is watching.",
+          "startState": "Explore is pure SwiftUI.",
+          "endState": "UIKit version matches features; you can explain diffable snapshots and cell reuse.",
+          "starterCode": "",
+          "minutes": 60,
+          "build": "Mock interview or a longer blog / Connections session",
+          "buildStudyHint": "An article on how iOS mock interviews are run and scored"
+        },
+        {
+          "id": "2027-01-24",
+          "date": "2027-01-24",
+          "weekday": "Sun",
+          "kind": "review",
+          "title": "Rest + weekly review",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Day off from coding. 15 minutes only: update the tracker, count the week's applications, outreach, screens and problems solved, compare them with the plan's checkpoints, and write down the first task for Monday.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        }
+      ]
+    },
+    {
+      "week": 10,
+      "startDate": "2027-01-25",
+      "endDate": "2027-01-31",
+      "theme": "Intervals + memory and streams",
+      "days": [
+        {
+          "id": "2027-01-25",
+          "date": "2027-01-25",
+          "weekday": "Mon",
+          "kind": "leetcode",
+          "title": "Merge Intervals",
+          "study": {
+            "topic": "Pattern: Intervals",
+            "searchHint": "NeetCode or a well-known written explanation of the Intervals pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 56: Merge Intervals",
+              "url": "https://leetcode.com/problems/merge-intervals/"
+            }
+          ],
+          "description": "Solve Merge Intervals in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0056_MergeIntervals.swift\nfunc merge(_ intervals: [[Int]]) -> [[Int]] {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0056_MergeIntervalsTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0056_MergeIntervals_example() {\n    #expect(merge([[1,3],[2,6],[8,10],[15,18]]) == [[1,6],[8,10],[15,18]])\n}",
+          "minutes": 45,
+          "build": "Blog: draft or revise this week's post",
+          "buildStudyHint": "An article on technical blogging for developers (structure, titles, examples)"
+        },
+        {
+          "id": "2027-01-26",
+          "date": "2027-01-26",
+          "weekday": "Tue",
+          "kind": "ios",
+          "title": "Find and fix a retain cycle",
+          "study": {
+            "topic": "ARC, capture lists, weak vs unowned",
+            "searchHint": "The Swift book's Automatic Reference Counting chapter on swift.org"
+          },
+          "links": [],
+          "description": "Deliberately create a retain cycle (a class holding a closure that captures self strongly, such as a timer). Find it with the Memory Graph Debugger and fix it.",
+          "startState": "Leak present.",
+          "endState": "Memory graph shows no leaked instances; you can explain the cycle and the fix in 60 seconds.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "iOS system design drill (one prompt from the plan, out loud, 45 min)",
+          "buildStudyHint": "A mobile system design write-up for the day's prompt (photo feed, chat, offline reader, image cache, etc.)"
+        },
+        {
+          "id": "2027-01-27",
+          "date": "2027-01-27",
+          "weekday": "Wed",
+          "kind": "leetcode",
+          "title": "Insert Interval",
+          "study": {
+            "topic": "Pattern: Intervals",
+            "searchHint": "NeetCode or a well-known written explanation of the Intervals pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 57: Insert Interval",
+              "url": "https://leetcode.com/problems/insert-interval/"
+            }
+          ],
+          "description": "Solve Insert Interval in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0057_InsertInterval.swift\nfunc insert(_ intervals: [[Int]], _ newInterval: [Int]) -> [[Int]] {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0057_InsertIntervalTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0057_InsertInterval_example() {\n    #expect(insert([[1,3],[6,9]], [2,5]) == [[1,5],[6,9]])\n}",
+          "minutes": 45,
+          "build": "Connections",
+          "buildStudyHint": "Apple docs or a WWDC session for the Connections feature you're working on"
+        },
+        {
+          "id": "2027-01-28",
+          "date": "2027-01-28",
+          "weekday": "Thu",
+          "kind": "ios",
+          "title": "From Combine to AsyncSequence",
+          "study": {
+            "topic": "AsyncSequence, AsyncStream and swift-async-algorithms",
+            "searchHint": "Apple docs for AsyncStream and the swift-async-algorithms README"
+          },
+          "links": [],
+          "description": "Write the Explore search pipeline once in Combine (debounce, removeDuplicates, flatMap latest), then again with AsyncStream. Keep the async version.",
+          "startState": "One implementation.",
+          "endState": "Both versions work; you can compare them out loud in an interview.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "Behavioral: say 1-2 STAR stories out loud",
+          "buildStudyHint": "An article on the STAR method for senior engineer behavioral interviews"
+        },
+        {
+          "id": "2027-01-29",
+          "date": "2027-01-29",
+          "weekday": "Fri",
+          "kind": "leetcode",
+          "title": "Non-overlapping Intervals",
+          "study": {
+            "topic": "Pattern: Intervals / greedy",
+            "searchHint": "NeetCode or a well-known written explanation of the Intervals / greedy pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 435: Non-overlapping Intervals",
+              "url": "https://leetcode.com/problems/non-overlapping-intervals/"
+            }
+          ],
+          "description": "Solve Non-overlapping Intervals in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0435_NonOverlappingIntervals.swift\nfunc eraseOverlapIntervals(_ intervals: [[Int]]) -> Int {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0435_NonOverlappingIntervalsTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0435_NonOverlappingIntervals_example() {\n    #expect(eraseOverlapIntervals([[1,2],[2,3],[3,4],[1,3]]) == 1)\n}",
+          "minutes": 45,
+          "build": "Blog: finish and publish if today is a publish day",
+          "buildStudyHint": "An article on promoting a technical blog post on LinkedIn"
+        },
+        {
+          "id": "2027-01-30",
+          "date": "2027-01-30",
+          "weekday": "Sat",
+          "kind": "livecoding",
+          "title": "Live-coding drill: chat screen",
+          "study": {
+            "topic": "ScrollViewReader and AsyncStream",
+            "searchHint": "Apple docs: ScrollViewReader"
+          },
+          "links": [],
+          "description": "Build a chat screen fed by a fake WebSocket (AsyncStream of messages every few seconds), with send, a pending/failed state, and auto-scroll to the newest message. Timebox: 45 minutes from a blank file, no AI, no copying from earlier code. Narrate as if an interviewer is watching.",
+          "startState": "Nothing.",
+          "endState": "Messages stream in, sends show status, scroll position is correct.",
+          "starterCode": "",
+          "minutes": 60,
+          "build": "Mock interview or a longer blog / Connections session",
+          "buildStudyHint": "An article on how iOS mock interviews are run and scored"
+        },
+        {
+          "id": "2027-01-31",
+          "date": "2027-01-31",
+          "weekday": "Sun",
+          "kind": "review",
+          "title": "Rest + weekly review",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Day off from coding. 15 minutes only: update the tracker, count the week's applications, outreach, screens and problems solved, compare them with the plan's checkpoints, and write down the first task for Monday.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        }
+      ]
+    },
+    {
+      "week": 11,
+      "startDate": "2027-02-01",
+      "endDate": "2027-02-07",
+      "theme": "Dynamic programming + modular app",
+      "days": [
+        {
+          "id": "2027-02-01",
+          "date": "2027-02-01",
+          "weekday": "Mon",
+          "kind": "leetcode",
+          "title": "Climbing Stairs",
+          "study": {
+            "topic": "Pattern: 1-D dynamic programming",
+            "searchHint": "NeetCode or a well-known written explanation of the 1-D dynamic programming pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 70: Climbing Stairs",
+              "url": "https://leetcode.com/problems/climbing-stairs/"
+            }
+          ],
+          "description": "Solve Climbing Stairs in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0070_ClimbingStairs.swift\nfunc climbStairs(_ n: Int) -> Int {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0070_ClimbingStairsTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0070_ClimbingStairs_example() {\n    #expect(climbStairs(5) == 8)\n}",
+          "minutes": 45,
+          "build": "Blog: draft or revise this week's post",
+          "buildStudyHint": "An article on technical blogging for developers (structure, titles, examples)"
+        },
+        {
+          "id": "2027-02-02",
+          "date": "2027-02-02",
+          "weekday": "Tue",
+          "kind": "ios",
+          "title": "Extract a Swift package",
+          "study": {
+            "topic": "Local Swift packages and access control",
+            "searchHint": "Apple docs 'Organizing your code with local packages'"
+          },
+          "links": [],
+          "description": "Move models, the repository and persistence into a local DrillsKit package with its own tests. The app imports it.",
+          "startState": "One target.",
+          "endState": "DrillsKit builds and tests on its own; the app depends on it; public API is minimal.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "iOS system design drill (one prompt from the plan, out loud, 45 min)",
+          "buildStudyHint": "A mobile system design write-up for the day's prompt (photo feed, chat, offline reader, image cache, etc.)"
+        },
+        {
+          "id": "2027-02-03",
+          "date": "2027-02-03",
+          "weekday": "Wed",
+          "kind": "leetcode",
+          "title": "House Robber",
+          "study": {
+            "topic": "Pattern: 1-D dynamic programming",
+            "searchHint": "NeetCode or a well-known written explanation of the 1-D dynamic programming pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 198: House Robber",
+              "url": "https://leetcode.com/problems/house-robber/"
+            }
+          ],
+          "description": "Solve House Robber in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0198_HouseRobber.swift\nfunc rob(_ nums: [Int]) -> Int {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0198_HouseRobberTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0198_HouseRobber_example() {\n    #expect(rob([2,7,9,3,1]) == 12)\n}",
+          "minutes": 45,
+          "build": "Connections",
+          "buildStudyHint": "Apple docs or a WWDC session for the Connections feature you're working on"
+        },
+        {
+          "id": "2027-02-04",
+          "date": "2027-02-04",
+          "weekday": "Thu",
+          "kind": "ios",
+          "title": "Background refresh",
+          "study": {
+            "topic": "BackgroundTasks: BGAppRefreshTask",
+            "searchHint": "Apple docs for BGTaskScheduler"
+          },
+          "links": [],
+          "description": "Refresh the remote curriculum in the background and reschedule the next refresh.",
+          "startState": "Refresh only in the foreground.",
+          "endState": "Simulated background launch (debugger command) fetches and saves new curriculum.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "Behavioral: say 1-2 STAR stories out loud",
+          "buildStudyHint": "An article on the STAR method for senior engineer behavioral interviews"
+        },
+        {
+          "id": "2027-02-05",
+          "date": "2027-02-05",
+          "weekday": "Fri",
+          "kind": "leetcode",
+          "title": "Coin Change",
+          "study": {
+            "topic": "Pattern: 1-D dynamic programming",
+            "searchHint": "NeetCode or a well-known written explanation of the 1-D dynamic programming pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 322: Coin Change",
+              "url": "https://leetcode.com/problems/coin-change/"
+            }
+          ],
+          "description": "Solve Coin Change in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0322_CoinChange.swift\nfunc coinChange(_ coins: [Int], _ amount: Int) -> Int {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0322_CoinChangeTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0322_CoinChange_example() {\n    #expect(coinChange([1,2,5], 11) == 3)\n    #expect(coinChange([2], 3) == -1)\n}",
+          "minutes": 45,
+          "build": "Blog: finish and publish if today is a publish day",
+          "buildStudyHint": "An article on promoting a technical blog post on LinkedIn"
+        },
+        {
+          "id": "2027-02-06",
+          "date": "2027-02-06",
+          "weekday": "Sat",
+          "kind": "livecoding",
+          "title": "Take-home rehearsal (90 minutes)",
+          "study": {
+            "topic": "What reviewers look for in iOS take-homes",
+            "searchHint": "An article from an iOS hiring manager on take-home assignments"
+          },
+          "links": [],
+          "description": "Do a mini take-home: a list and detail app for a public API of your choice, with loading/error states, 3 tests, and a README covering decisions and trade-offs. Timebox: 45 minutes from a blank file, no AI, no copying from earlier code. Narrate as if an interviewer is watching.",
+          "startState": "Nothing.",
+          "endState": "A repo you'd be comfortable submitting, done in 90 minutes.",
+          "starterCode": "",
+          "minutes": 60,
+          "build": "Mock interview or a longer blog / Connections session",
+          "buildStudyHint": "An article on how iOS mock interviews are run and scored"
+        },
+        {
+          "id": "2027-02-07",
+          "date": "2027-02-07",
+          "weekday": "Sun",
+          "kind": "review",
+          "title": "Rest + weekly review",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Day off from coding. 15 minutes only: update the tracker, count the week's applications, outreach, screens and problems solved, compare them with the plan's checkpoints, and write down the first task for Monday.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        }
+      ]
+    },
+    {
+      "week": 12,
+      "startDate": "2027-02-08",
+      "endDate": "2027-02-14",
+      "theme": "DP, backtracking + interview classics",
+      "days": [
+        {
+          "id": "2027-02-08",
+          "date": "2027-02-08",
+          "weekday": "Mon",
+          "kind": "leetcode",
+          "title": "Longest Increasing Subsequence",
+          "study": {
+            "topic": "Pattern: Dynamic programming",
+            "searchHint": "NeetCode or a well-known written explanation of the Dynamic programming pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 300: Longest Increasing Subsequence",
+              "url": "https://leetcode.com/problems/longest-increasing-subsequence/"
+            }
+          ],
+          "description": "Solve Longest Increasing Subsequence in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0300_LongestIncreasingSubsequence.swift\nfunc lengthOfLIS(_ nums: [Int]) -> Int {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0300_LongestIncreasingSubsequenceTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0300_LongestIncreasingSubsequence_example() {\n    #expect(lengthOfLIS([10,9,2,5,3,7,101,18]) == 4)\n}",
+          "minutes": 45,
+          "build": "Blog: draft or revise this week's post",
+          "buildStudyHint": "An article on technical blogging for developers (structure, titles, examples)"
+        },
+        {
+          "id": "2027-02-09",
+          "date": "2027-02-09",
+          "weekday": "Tue",
+          "kind": "ios",
+          "title": "Thread-safe LRU cache",
+          "study": {
+            "topic": "LRU design: dictionary + doubly linked list, and actors",
+            "searchHint": "A clear write-up of LRU cache design"
+          },
+          "links": [],
+          "description": "Give ImageCache a byte limit with LRU eviction, as an actor. This is a common iOS interview question, so be able to write it fast.",
+          "startState": "Unbounded cache.",
+          "endState": "Cache evicts least-recently-used items past the limit; tests prove eviction order.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "iOS system design drill (one prompt from the plan, out loud, 45 min)",
+          "buildStudyHint": "A mobile system design write-up for the day's prompt (photo feed, chat, offline reader, image cache, etc.)"
+        },
+        {
+          "id": "2027-02-10",
+          "date": "2027-02-10",
+          "weekday": "Wed",
+          "kind": "leetcode",
+          "title": "Subsets",
+          "study": {
+            "topic": "Pattern: Backtracking",
+            "searchHint": "NeetCode or a well-known written explanation of the Backtracking pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 78: Subsets",
+              "url": "https://leetcode.com/problems/subsets/"
+            }
+          ],
+          "description": "Solve Subsets in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0078_Subsets.swift\nfunc subsets(_ nums: [Int]) -> [[Int]] {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0078_SubsetsTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0078_Subsets_example() {\n    #expect(subsets([1,2,3]).count == 8)\n}",
+          "minutes": 45,
+          "build": "Connections",
+          "buildStudyHint": "Apple docs or a WWDC session for the Connections feature you're working on"
+        },
+        {
+          "id": "2027-02-11",
+          "date": "2027-02-11",
+          "weekday": "Thu",
+          "kind": "ios",
+          "title": "Debug a data race",
+          "study": {
+            "topic": "Thread Sanitizer",
+            "searchHint": "Apple docs 'Diagnosing memory, thread, and crash issues early'"
+          },
+          "links": [],
+          "description": "Write a class-based counter cache used from many tasks with no protection. Catch the race with Thread Sanitizer, then fix it two ways (actor and a Mutex/lock) and compare.",
+          "startState": "Racy code.",
+          "endState": "TSan is clean; you can explain both fixes and when you'd use each.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "Behavioral: say 1-2 STAR stories out loud",
+          "buildStudyHint": "An article on the STAR method for senior engineer behavioral interviews"
+        },
+        {
+          "id": "2027-02-12",
+          "date": "2027-02-12",
+          "weekday": "Fri",
+          "kind": "leetcode",
+          "title": "Combination Sum",
+          "study": {
+            "topic": "Pattern: Backtracking",
+            "searchHint": "NeetCode or a well-known written explanation of the Backtracking pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 39: Combination Sum",
+              "url": "https://leetcode.com/problems/combination-sum/"
+            }
+          ],
+          "description": "Solve Combination Sum in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0039_CombinationSum.swift\nfunc combinationSum(_ candidates: [Int], _ target: Int) -> [[Int]] {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0039_CombinationSumTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0039_CombinationSum_example() {\n    #expect(Set(combinationSum([2,3,6,7], 7)) == [[2,2,3],[7]])\n}",
+          "minutes": 45,
+          "build": "Blog: finish and publish if today is a publish day",
+          "buildStudyHint": "An article on promoting a technical blog post on LinkedIn"
+        },
+        {
+          "id": "2027-02-13",
+          "date": "2027-02-13",
+          "weekday": "Sat",
+          "kind": "livecoding",
+          "title": "Live-coding drill: rebuild the core app",
+          "study": {
+            "topic": "Speed and structure under time pressure",
+            "searchHint": "Your own DailyDrills code (review it the night before)"
+          },
+          "links": [],
+          "description": "From a blank project, rebuild Weeks list, Week detail and Day detail with JSON decoding. Timebox: 45 minutes from a blank file, no AI, no copying from earlier code. Narrate as if an interviewer is watching.",
+          "startState": "Blank project.",
+          "endState": "Working list/detail with decoding in 45 minutes.",
+          "starterCode": "",
+          "minutes": 60,
+          "build": "Mock interview or a longer blog / Connections session",
+          "buildStudyHint": "An article on how iOS mock interviews are run and scored"
+        },
+        {
+          "id": "2027-02-14",
+          "date": "2027-02-14",
+          "weekday": "Sun",
+          "kind": "review",
+          "title": "Rest + weekly review",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Day off from coding. 15 minutes only: update the tracker, count the week's applications, outreach, screens and problems solved, compare them with the plan's checkpoints, and write down the first task for Monday.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        }
+      ]
+    },
+    {
+      "week": 13,
+      "startDate": "2027-02-15",
+      "endDate": "2027-02-21",
+      "theme": "Final rounds: grids, LRU + polish",
+      "days": [
+        {
+          "id": "2027-02-15",
+          "date": "2027-02-15",
+          "weekday": "Mon",
+          "kind": "leetcode",
+          "title": "Word Search",
+          "study": {
+            "topic": "Pattern: Backtracking on a grid",
+            "searchHint": "NeetCode or a well-known written explanation of the Backtracking on a grid pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 79: Word Search",
+              "url": "https://leetcode.com/problems/word-search/"
+            }
+          ],
+          "description": "Solve Word Search in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0079_WordSearch.swift\nfunc exist(_ board: [[Character]], _ word: String) -> Bool {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0079_WordSearchTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0079_WordSearch_example() {\n    // ABCCED in the classic 3x4 board -> true\n}",
+          "minutes": 45,
+          "build": "Blog: draft or revise this week's post",
+          "buildStudyHint": "An article on technical blogging for developers (structure, titles, examples)"
+        },
+        {
+          "id": "2027-02-16",
+          "date": "2027-02-16",
+          "weekday": "Tue",
+          "kind": "ios",
+          "title": "Polish for showing",
+          "study": {
+            "topic": "App icon, launch, and TestFlight basics",
+            "searchHint": "Apple docs on distributing with TestFlight"
+          },
+          "links": [],
+          "description": "Add an app icon, fix rough edges, and archive a TestFlight build (optional).",
+          "startState": "Working but rough.",
+          "endState": "An app you could screen-share in an interview.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "iOS system design drill (one prompt from the plan, out loud, 45 min)",
+          "buildStudyHint": "A mobile system design write-up for the day's prompt (photo feed, chat, offline reader, image cache, etc.)"
+        },
+        {
+          "id": "2027-02-17",
+          "date": "2027-02-17",
+          "weekday": "Wed",
+          "kind": "leetcode",
+          "title": "LRU Cache",
+          "study": {
+            "topic": "Pattern: Hash map + doubly linked list",
+            "searchHint": "NeetCode or a well-known written explanation of the Hash map + doubly linked list pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 146: LRU Cache",
+              "url": "https://leetcode.com/problems/lru-cache/"
+            }
+          ],
+          "description": "Solve LRU Cache in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0146_LruCache.swift\nfinal class LRUCache {\n    init(_ capacity: Int) {}\n    func get(_ key: Int) -> Int { -1 }\n    func put(_ key: Int, _ value: Int) {}\n}\n\n// DailyDrillsTests/P0146_LruCacheTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0146_LruCache_example() {\n    let c = LRUCache(2); c.put(1, 1); c.put(2, 2)\n    #expect(c.get(1) == 1); c.put(3, 3); #expect(c.get(2) == -1)\n}",
+          "minutes": 45,
+          "build": "Connections",
+          "buildStudyHint": "Apple docs or a WWDC session for the Connections feature you're working on"
+        },
+        {
+          "id": "2027-02-18",
+          "date": "2027-02-18",
+          "weekday": "Thu",
+          "kind": "ios",
+          "title": "README as your interview story",
+          "study": {
+            "topic": "Writing architecture docs",
+            "searchHint": "An example of a strong open-source iOS README"
+          },
+          "links": [],
+          "description": "Write the README: features, architecture diagram, concurrency model, trade-offs, what you'd do next. Rehearse a 2-minute walkthrough.",
+          "startState": "No README.",
+          "endState": "README done; 2-minute walkthrough recorded once.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "Behavioral: say 1-2 STAR stories out loud",
+          "buildStudyHint": "An article on the STAR method for senior engineer behavioral interviews"
+        },
+        {
+          "id": "2027-02-19",
+          "date": "2027-02-19",
+          "weekday": "Fri",
+          "kind": "leetcode",
+          "title": "Jump Game",
+          "study": {
+            "topic": "Pattern: Greedy",
+            "searchHint": "NeetCode or a well-known written explanation of the Greedy pattern, in Swift if possible"
+          },
+          "links": [
+            {
+              "title": "LeetCode 55: Jump Game",
+              "url": "https://leetcode.com/problems/jump-game/"
+            }
+          ],
+          "description": "Solve Jump Game in Swift inside DailyDrills, with no AI help. Talk through your approach out loud, state time and space complexity, then make the test pass. Add one edge-case test of your own. If stuck at 25 minutes, read a solution and re-solve it from scratch in 2 days.",
+          "startState": "Problem file(s) contain only the signature and a fatalError; the example test fails.",
+          "endState": "Your solution passes the example test plus one edge-case test you wrote. A comment at the top states the approach and Big-O.",
+          "starterCode": "// DailyDrills/Problems/P0055_JumpGame.swift\nfunc canJump(_ nums: [Int]) -> Bool {\n    // TODO: solve without AI, out loud, 25-minute timer\n    fatalError(\"Not implemented\")\n}\n\n// DailyDrillsTests/P0055_JumpGameTests.swift\nimport Testing\n@testable import DailyDrills\n\n@Test func p0055_JumpGame_example() {\n    #expect(canJump([2,3,1,1,4]))\n    #expect(!canJump([3,2,1,0,4]))\n}",
+          "minutes": 45,
+          "build": "Blog: finish and publish if today is a publish day",
+          "buildStudyHint": "An article on promoting a technical blog post on LinkedIn"
+        },
+        {
+          "id": "2027-02-20",
+          "date": "2027-02-20",
+          "weekday": "Sat",
+          "kind": "livecoding",
+          "title": "Mock live-coding with a friend",
+          "study": {
+            "topic": "How live coding is graded",
+            "searchHint": "An article from an interviewer on what they grade in live coding"
+          },
+          "links": [],
+          "description": "Have a friend give you one LeetCode medium and one iOS prompt from earlier weeks, cold. Timebox: 45 minutes from a blank file, no AI, no copying from earlier code. Narrate as if an interviewer is watching.",
+          "startState": "Nothing.",
+          "endState": "Both done with feedback written down.",
+          "starterCode": "",
+          "minutes": 60,
+          "build": "Mock interview or a longer blog / Connections session",
+          "buildStudyHint": "An article on how iOS mock interviews are run and scored"
+        },
+        {
+          "id": "2027-02-21",
+          "date": "2027-02-21",
+          "weekday": "Sun",
+          "kind": "review",
+          "title": "Rest + weekly review",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Day off from coding. 15 minutes only: update the tracker, count the week's applications, outreach, screens and problems solved, compare them with the plan's checkpoints, and write down the first task for Monday.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        }
+      ]
+    },
+    {
+      "week": 14,
+      "startDate": "2027-02-22",
+      "endDate": "2027-02-28",
+      "theme": "Close: review misses",
+      "days": [
+        {
+          "id": "2027-02-22",
+          "date": "2027-02-22",
+          "weekday": "Mon",
+          "kind": "leetcode",
+          "title": "Re-solve miss #1",
+          "study": {
+            "topic": "Your misses list",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Re-solve your worst miss from the misses list, timed, explaining out loud.",
+          "startState": "Old solution hidden.",
+          "endState": "Solved cleanly in under 25 minutes.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "Blog: draft or revise this week's post",
+          "buildStudyHint": "An article on technical blogging for developers (structure, titles, examples)"
+        },
+        {
+          "id": "2027-02-23",
+          "date": "2027-02-23",
+          "weekday": "Tue",
+          "kind": "ios",
+          "title": "Re-do your weakest iOS topic",
+          "study": {
+            "topic": "Your interview notes",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Pick the iOS question you answered worst in a real interview and rebuild it in DailyDrills.",
+          "startState": "Weak spot.",
+          "endState": "A version you'd be proud to explain.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "iOS system design drill (one prompt from the plan, out loud, 45 min)",
+          "buildStudyHint": "A mobile system design write-up for the day's prompt (photo feed, chat, offline reader, image cache, etc.)"
+        },
+        {
+          "id": "2027-02-24",
+          "date": "2027-02-24",
+          "weekday": "Wed",
+          "kind": "leetcode",
+          "title": "Re-solve miss #2",
+          "study": {
+            "topic": "Your misses list",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Re-solve the next miss, timed.",
+          "startState": "Old solution hidden.",
+          "endState": "Solved cleanly.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "Connections",
+          "buildStudyHint": "Apple docs or a WWDC session for the Connections feature you're working on"
+        },
+        {
+          "id": "2027-02-25",
+          "date": "2027-02-25",
+          "weekday": "Thu",
+          "kind": "ios",
+          "title": "Light day",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Light review only; you may be finishing at Hershey and preparing to start.",
+          "startState": "",
+          "endState": "",
+          "starterCode": "",
+          "minutes": 20,
+          "build": "Behavioral: say 1-2 STAR stories out loud",
+          "buildStudyHint": "An article on the STAR method for senior engineer behavioral interviews"
+        },
+        {
+          "id": "2027-02-26",
+          "date": "2027-02-26",
+          "weekday": "Fri",
+          "kind": "leetcode",
+          "title": "Re-solve miss #3",
+          "study": {
+            "topic": "Your misses list",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Re-solve one more miss, timed.",
+          "startState": "Old solution hidden.",
+          "endState": "Solved cleanly.",
+          "starterCode": "",
+          "minutes": 45,
+          "build": "Blog: finish and publish if today is a publish day",
+          "buildStudyHint": "An article on promoting a technical blog post on LinkedIn"
+        },
+        {
+          "id": "2027-02-27",
+          "date": "2027-02-27",
+          "weekday": "Sat",
+          "kind": "review",
+          "title": "Rest before you start",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "No coding. Get ready for Mar 1.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        },
+        {
+          "id": "2027-02-28",
+          "date": "2027-02-28",
+          "weekday": "Sun",
+          "kind": "review",
+          "title": "Rest + weekly review",
+          "study": {
+            "topic": "None",
+            "searchHint": ""
+          },
+          "links": [],
+          "description": "Day off from coding. 15 minutes only: update the tracker, count the week's applications, outreach, screens and problems solved, compare them with the plan's checkpoints, and write down the first task for Monday.",
+          "startState": "Week done.",
+          "endState": "Numbers logged; one change chosen for next week.",
+          "starterCode": "",
+          "minutes": 15,
+          "build": "",
+          "buildStudyHint": "An article on running a weekly job-search review, or on avoiding burnout during a job search"
+        }
+      ]
+    }
+  ]
+}
