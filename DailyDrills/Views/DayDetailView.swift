@@ -8,37 +8,37 @@ struct DayDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 header
-                if !day.study.topic.isEmpty || !day.study.searchHint.isEmpty {
+                if day.study.topic.isNotEmpty || day.study.searchHint.isNotEmpty {
                     DetailSection(title: "Study") {
                         Text(day.study.topic)
                         Text(day.study.searchHint)
                             .foregroundStyle(.secondary)
                     }
                 }
-                if !linkDestinations.isEmpty {
+                if day.links.isNotEmpty {
                     DetailSection(title: "Links") {
-                        ForEach(linkDestinations, id: \.url) { item in
-                            SwiftUI.Link(destination: item.url) {
-                                Label(item.title, systemImage: "arrow.up.right.square")
+                        ForEach(day.links, id: \.url) { link in
+                            SwiftUI.Link(destination: link.url) {
+                                Label(link.title, systemImage: "arrow.up.right.square")
                             }
                         }
                     }
                 }
-                if !day.description.isEmpty {
+                if day.description.isNotEmpty {
                     DetailSection(title: "What to build") {
                         Text(day.description)
                     }
                 }
                 states
-                if !day.starterCode.isEmpty {
+                if day.starterCode.isNotEmpty {
                     StarterCodeView(code: day.starterCode)
                 }
-                if !day.build.isEmpty || !day.buildStudyHint.isEmpty {
+                if day.build.isNotEmpty || day.buildStudyHint.isNotEmpty {
                     DetailSection(title: "Also today") {
-                        if !day.build.isEmpty {
+                        if day.build.isNotEmpty {
                             Text(day.build)
                         }
-                        if !day.buildStudyHint.isEmpty {
+                        if day.buildStudyHint.isNotEmpty {
                             Text(day.buildStudyHint)
                                 .foregroundStyle(.secondary)
                         }
@@ -71,20 +71,18 @@ struct DayDetailView: View {
 
     @ViewBuilder
     private var states: some View {
-        if !day.startState.isEmpty || !day.endState.isEmpty {
+        if day.startState.isNotEmpty || day.endState.isNotEmpty {
             let layout = sizeClass == .regular
                 ? AnyLayout(HStackLayout(alignment: .top, spacing: 12))
                 : AnyLayout(VStackLayout(alignment: .leading, spacing: 12))
             layout {
-                StateCard(title: "Start state", text: day.startState)
-                StateCard(title: "End state", text: day.endState)
+                if day.startState.isNotEmpty {
+                    StateCard(title: "Start state", text: day.startState)
+                }
+                if day.endState.isNotEmpty {
+                    StateCard(title: "End state", text: day.endState)
+                }
             }
-        }
-    }
-
-    private var linkDestinations: [(title: String, url: URL)] {
-        day.links.compactMap { link in
-            URL(string: link.url).map { (link.title, $0) }
         }
     }
 }

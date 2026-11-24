@@ -16,12 +16,16 @@ struct CurriculumTests {
 
     @Test func weekDatesAreConsecutive() throws {
         let weeks = try CurriculumLoader.loadBundled().weeks
-        let calendar = Calendar(identifier: .gregorian)
+        let calendar = Calendar.current
         for (previous, next) in zip(weeks, weeks.dropFirst()) {
-            let start = try #require(DrillDate.date(from: previous.startDate))
-            let following = try #require(DrillDate.date(from: next.startDate))
-            let gap = calendar.dateComponents([.day], from: start, to: following).day
+            let gap = calendar.dateComponents([.day], from: previous.startDate, to: next.startDate).day
             #expect(gap == 7, "Week \(next.week) should start 7 days after week \(previous.week)")
         }
+    }
+
+    @Test func parsesDayAsLocalCalendarDate() throws {
+        let date = try DrillDate.parse("2026-11-23")
+        let parts = Calendar.current.dateComponents([.year, .month, .day], from: date)
+        #expect(parts.year == 2026 && parts.month == 11 && parts.day == 23)
     }
 }

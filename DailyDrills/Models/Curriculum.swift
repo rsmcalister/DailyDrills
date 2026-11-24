@@ -9,15 +9,15 @@ struct Curriculum: Decodable, Sendable {
 struct Week: Decodable, Identifiable, Hashable, Sendable {
     var id: Int { week }
     let week: Int
-    let startDate: String
-    let endDate: String
+    let startDate: Date
+    let endDate: Date
     let theme: String
     let days: [DayTask]
 }
 
 struct DayTask: Decodable, Identifiable, Hashable, Sendable {
     let id: String
-    let date: String
+    let date: Date
     let weekday: String
     let kind: Kind
     let title: String
@@ -43,5 +43,5 @@ struct Study: Decodable, Hashable, Sendable {
 
 struct Link: Decodable, Hashable, Sendable {
     let title: String
-    let url: String
+    let url: URL
 }
